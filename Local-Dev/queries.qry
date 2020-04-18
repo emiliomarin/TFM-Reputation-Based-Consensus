@@ -1,0 +1,73 @@
+/**
+ * New query file
+ */
+
+/* Agents queries */ 
+
+query selectAgent {
+  description: "Select Agents based on agentId"
+  statement:
+      SELECT com.emilio.tfm.Agent
+      WHERE (agentId == _$agentId)
+}
+
+query selectAllAgents {
+  description: "Select all Agents"
+  statement:
+      SELECT com.emilio.tfm.Agent
+}
+
+
+/* System queries */ 
+
+query selectSystem {
+  description: "Select System based on systemId"
+  statement:
+      SELECT com.emilio.tfm.System
+      WHERE (systemId == _$systemId)
+}
+
+
+/* Measures queries */ 
+
+query selectMeasures {
+  description: "Select all Measures"
+  statement:
+      SELECT com.emilio.tfm.Measure
+}
+
+query selectMeasuresForConsensus {
+  description: "Select Measure for a specific consensusId and subconsensusId"
+  statement:
+      SELECT com.emilio.tfm.Measure
+      WHERE (consensusId == _$consensusId AND subConsensusId == _$subConsensusId)
+}
+
+/* Consensus queries */
+
+query selectAllConsensus {
+  description: "Select all the Consensus"
+  statement:
+      SELECT com.emilio.tfm.Consensus
+}
+
+query selectConsensusForSystem {
+  description: "Select PENDING Consensus for a System"
+  statement:
+      SELECT com.emilio.tfm.Consensus
+      WHERE (systemId == _$systemId AND status == 'PENDING') 
+}
+
+query selectSubConsensus {
+  description: "Select specific subConsensus"
+  statement:
+      SELECT com.emilio.tfm.Consensus
+      WHERE (consensusId == _$consensusId AND subConsensusId == _$consensusId) 
+}
+
+query selectAllSubConsensus {
+  description: "Select all subConsensus in a Consensus"
+  statement:
+      SELECT com.emilio.tfm.Measure
+      WHERE (consensusId == _$consensusId) 
+}

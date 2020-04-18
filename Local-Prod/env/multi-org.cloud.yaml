@@ -1,0 +1,39 @@
+# List all Peer orgaznizations
+organizations:
+  eventbrite:
+    peers:
+      - eb-peer1:
+          url: grpc://localhost:7051
+          eventUrl: grpc://localhost:7053
+      - eb-peer2:
+          url: grpc://localhost:8051
+          eventUrl: grpc://localhost:8053
+  support:
+    peers:
+      - sup-peer1:
+          url: grpc://localhost:9051
+          eventUrl: grpc://localhost:9053
+
+      - sup-peer2:
+          url: grpc://localhost:10051
+          eventUrl: grpc://localhost:10053
+# List the orderer URL
+orderers:
+  orderer.eventbrite.com:
+      url: grpc://localhost:7050
+# List the CA 
+ca:
+  name: ca.eventbrite.com
+  url: http://localhost:7054
+
+# List the application channels 
+channels:
+  eventbritechannel:
+    orderers:
+      - orderer.eventbrite.com
+    peers:
+      eb-peer1:
+      eb-peer2:
+      sup-peer1:
+      sup-peer2:
+

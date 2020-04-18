@@ -1,0 +1,39 @@
+{
+  "engines": {
+    "composer": "^0.20.0"
+  },
+  "name": "tfm",
+  "version": "0.1.126",
+  "description": "tfm",
+  "scripts": {
+    "prepublish": "mkdir ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/tfm.bna",
+    "deployBNA": "composer network install --archiveFile dist/tfm.bna --card PeerAdmin@hlfv1",
+    "upgradeBNA": "composer network upgrade --networkName tfm --networkVersion 0.1.126 --card PeerAdmin@hlfv1",
+    "startBNA": "composer network start --networkName tfm --networkVersion 0.1.126 --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --file adminNetwork.card",
+    "pretest": "npm run lint",
+    "lint": "eslint .",
+    "test": "nyc mocha -t 0 test/*.js && cucumber-js"
+  },
+  "keywords": [
+    "composer",
+    "composer-network"
+  ],
+  "author": "emilio",
+  "email": "emilio@eventbrite.com",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "composer-admin": "^0.20.0",
+    "composer-cli": "^0.20.0",
+    "composer-client": "^0.20.0",
+    "composer-common": "^0.20.0",
+    "composer-connector-embedded": "^0.20.0",
+    "composer-cucumber-steps": "^0.20.0",
+    "chai": "latest",
+    "chai-as-promised": "latest",
+    "cucumber": "^2.2.0",
+    "eslint": "latest",
+    "nyc": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest"
+  }
+}

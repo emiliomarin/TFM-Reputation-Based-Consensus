@@ -1,0 +1,105 @@
+
+namespace com.emilio.tfm
+
+
+concept CurrentMeasure{
+  o Double measure
+}
+
+enum ConsensusStatus{
+  o INACTIVE
+  o COMPLETED
+  o PENDING
+}
+
+participant Agent identified by agentId {
+  o String agentId
+  o CurrentMeasure measure
+  o Double reputation
+  --> Agent[] inAgents
+}
+
+asset Measure identified by measureId {
+
+  o String measureId
+  o String systemId
+  o String consensusId
+  o Integer subConsensusId
+  o Double measure
+  --> Agent agent
+}
+
+asset Consensus identified by consensusId {
+  o String consensusId
+  o Integer subConsensusId
+  o String systemId
+  o ConsensusStatus status
+  o Double agreedMeasure
+}
+
+asset System identified by systemId {
+  o String systemId
+  --> Agent[] agents
+}
+
+@returns(Integer[])
+transaction add_measure {
+  o String agentId
+  o String systemId
+  o Double measure
+  o Integer subConsensusId
+  o String consensusId
+}
+
+transaction update_subconsensus_id {
+  o String systemId
+  o Integer subConsensusId
+  o String consensusId
+}
+
+transaction setup_agent {
+  o String agentId
+  o String systemId
+  o String consensusId
+  o Double measure
+}
+
+transaction update_reputation {
+  o String agentId
+  o Double delta
+}
+
+transaction register_system {
+  o String systemId
+}
+
+transaction start_consensus {
+  o String systemId
+}
+
+transaction update_consensus {
+  o String systemId
+  o Double measure
+}
+
+transaction BasicEventTransaction {
+  o String agentId
+  o String systemId
+  o String consensusId
+  o String measureId
+  o Double measure
+}
+
+event StartConsensus {
+  o String systemId
+  o String consensusId
+} 
+
+
+/*
+https://github.com/kvasnica/wsclient
+https://hyperledger.github.io/composer/v0.19/business-network/publishing-events
+https://hyperledger.github.io/composer/v0.19/applications/subscribing-to-events
+https://hyperledger.github.io/composer/v0.16/integrating/publishing-events
+
+*/
