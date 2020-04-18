@@ -18,8 +18,8 @@
     "composer",
     "composer-network"
   ],
-  "author": "emilio",
-  "email": "emilio@eventbrite.com",
+  "author": "Emilio Marin",
+  "email": "marinfernandezemilio@gmail.com",
   "license": "Apache-2.0",
   "devDependencies": {
     "composer-admin": "^0.20.0",
