@@ -240,8 +240,8 @@ ldap:
 # which are always stored in lower case.
 #############################################################################
 affiliations:
-  eventbrite:
-    - ticketing
+  tfm:
+    - consensus
   support:
     - support
 
