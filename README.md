@@ -7,3 +7,4 @@ The goal of this projects is to test a newly developed algorithm against know co
 With this we prevent malicious agent to alter the result of the consensus and always reach an agreement.
 
 Emilio Marin Fernandez
+
